@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./Login.css"
 
 
 const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, errors, touched }) => (
@@ -8,7 +8,7 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
         <form onSubmit={handleSubmit}>
             <div className="form-row">
                 <div className="form-group col-11">
-                    <label className="col-form-label">Email</label>
+                    <label className="form-label">Email</label>
                     <input
                         type="email"
                         className="form-control"
@@ -20,7 +20,7 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
                     {errors.email && <div id="feedback">{errors.email}</div>}
                 </div>
                 <div className="form-group col-11">
-                    <label className="col-form-label">Contraseña</label>
+                    <label className="form-label">Contraseña</label>
                     <input
                         type="password"
                         className="form-control"

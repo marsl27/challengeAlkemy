@@ -35,6 +35,7 @@ const Login = () => (
                 })
                 .then(response => {
                     localStorage.setItem("token", response.data.token);
+                   window.location.pathname="/"
                 })
                 .catch(error => {
                     console.log(error);

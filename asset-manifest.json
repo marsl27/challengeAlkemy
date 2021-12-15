@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/marsl27/challengeAlkemy/static/css/main.46065920.css",
-    "main.js": "/marsl27/challengeAlkemy/static/js/main.1f47748e.js",
-    "index.html": "/marsl27/challengeAlkemy/index.html",
-    "main.46065920.css.map": "/marsl27/challengeAlkemy/static/css/main.46065920.css.map",
-    "main.1f47748e.js.map": "/marsl27/challengeAlkemy/static/js/main.1f47748e.js.map"
+    "main.css": "/challengeAlkemy/static/css/main.46065920.css",
+    "main.js": "/challengeAlkemy/static/js/main.1f47748e.js",
+    "index.html": "/challengeAlkemy/index.html",
+    "main.46065920.css.map": "/challengeAlkemy/static/css/main.46065920.css.map",
+    "main.1f47748e.js.map": "/challengeAlkemy/static/js/main.1f47748e.js.map"
   },
   "entrypoints": [
     "static/css/main.46065920.css",

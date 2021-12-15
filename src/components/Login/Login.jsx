@@ -1,6 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
 import "./Login.css"
+import Form from './Form';
+import axios from "axios"
+import Swal from 'sweetalert2'
 
 
 const validation = values => {
@@ -24,47 +27,28 @@ const Login = () => (
             password: '',
         }}
         onSubmit={(values, actions) => {
-            setTimeout(() => {
-                console.log(values)
-                console.log(actions)
-                actions.setSubmitting(false);
-            }, 2000);
+
+            axios
+                .post("http://challenge-react.alkemy.org/", {
+                    email: values.email,
+                    password: values.password
+                })
+                .then(response => {
+                    localStorage.setItem("token", response.data.token);
+                })
+                .catch(error => {
+                    console.log(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                      })
+                })
+
         }}
         validate={validation}
     >
-        {props =>
-            <div className="containerFormLogin">
-                <h2 className="titleLogin">Iniciar sesión</h2>
-                <form >
-                    <div className="form-row">
-                        <div className="form-group col-11">
-                            <label className="col-form-label">Email</label>
-                            <input
-                                type="email"
-                                className="form-control"
-                                //onChange={props.handleChange}
-                                //onBlur={props.handleBlur}
-                                value={props.values.email}
-                                name="email"
-                            />
-
-                        </div>
-                        <div className="form-group col-11">
-                            <label className="col-form-label">Contraseña</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                //onChange={props.handleChange}
-                                //onBlur={props.handleBlur}
-                                value={props.values.password}
-                                name="password"
-                            />
-                        </div>
-                        {props.errors.name && <div id="feedback">{props.errors.name}</div>}
-                        <button type="submit" className="btn btn-primary col-5">Enviar</button>
-                    </div>
-                </form>
-            </div>}
+        {props => <Form {...props} />}
     </Formik>
 );
 

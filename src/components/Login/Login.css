@@ -27,5 +27,28 @@
 
 .form-label{
     width: 100%;
-    text-align: center;
+    
+}
+
+.btn-primary{
+    background-color: #002462;
+}
+
+
+.btn-primary:hover{
+    background-color: #C0CBDC;
+    color: #002462;
+}
+
+
+
+.form-group input, .form-group input:focus, .form-group input:active, .form-group input:hover{
+    background-color: #EBEDEC;
+    border: none;
+    border-bottom: 1px solid #002462;
+    border-radius: 0;
+    outline:none;
+   
+    box-shadow: none;
+   
 }

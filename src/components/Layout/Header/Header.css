@@ -1,8 +1,46 @@
 .header{
     background-color: #002462;
-    color: #EBEDEC;
+    display: flex;
+    align-items: center;
     height: 99px;
+    justify-content: space-between;
+    padding: 0 30px;
     position: fixed;
     top: 0;
+    
     width: 100%;
 }
+.header a{
+    color: #EBEDEC;
+    text-decoration: none;
+}
+
+.containerLogo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 350px;
+    width: 28%;
+}
+
+.header img{
+    height: 80px;
+    width: 80px;
+}
+.btn a{
+    color:#002462;
+}
+.btn-outline-primary{
+    background-color: #EBEDEC;
+    height:40%;
+    transition: all 1s;
+    width: 150px;
+}
+
+.btn-outline-primary:hover{
+    background-color: #C0CBDC;
+    transform: scale(1.1);
+}
+
+

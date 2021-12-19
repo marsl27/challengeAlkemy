@@ -6,7 +6,7 @@ const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 8080;
 
 corsProxy.createServer({
-    originWhitelist: ['http://localhost:3000', "https://marsl27.github.io/challengeAlkemy/", 'http://superheroapi.com/api/10227290079499431/'],
+    originWhitelist: ['https://marsl27.github.io/challengeAlkemy/', 'https://portfolio-ravenous.herokuapp.com'],
     requireHeader: ['origin', 'x-requested-with'],
     removeHeaders: ['cookie', 'cookie2']
 }).listen(port, host, () => {

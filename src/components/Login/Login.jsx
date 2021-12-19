@@ -10,11 +10,11 @@ const validation = values => {
     let errors = {};
 
     if (!values.email) {
-        errors.email = 'Email is required!';
+        errors.email = 'El Email es requerido!';
     }
 
     if (!values.password) {
-        errors.password = 'Password is required!';
+        errors.password = 'La contraseña es requerida!';
     }
 
     return errors;
@@ -34,6 +34,7 @@ const Login = () => (
                     password: values.password
                 })
                 .then(response => {
+                    console.log(response);
                     localStorage.setItem("token", response.data.token);
                    window.location.pathname="/"
                 })

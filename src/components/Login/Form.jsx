@@ -17,7 +17,7 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
                         value={values.email}
                         name="email"
                     />
-                    {errors.email && <div id="feedback">{errors.email}</div>}
+                    {errors.email && <div>{errors.email}</div>}
                 </div>
                 <div className="form-group col-11">
                     <label className="form-label">Contraseña</label>
@@ -29,7 +29,7 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
                         value={values.password}
                         name="password"
                     />
-                    {errors.password && <div id="feedback">{errors.password}</div>}
+                    {errors.password && <div>{errors.password}</div>}
                 </div>
 
                 <button type="submit" className="btn btn-primary col-5" >Enviar</button>

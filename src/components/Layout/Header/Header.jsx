@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <div className="header">
             
-            <Link to="/"className="containerLogo">
+            <Link to="/challengeAlkemy" className="containerLogo">
                 <img src={icon} />
                 <h1>SuperTeam</h1>
             </Link>

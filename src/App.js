@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <LayoutPrincipal>
         <Routes>
-          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/challengeAlkemy" element={<Home/>}/>
           <Route exact path="/login" element={<Login/>}/>
         </Routes>
       </LayoutPrincipal>

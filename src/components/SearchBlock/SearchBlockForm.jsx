@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import axios from "axios"
 import SearchBlock from './SearchBlock';
+import heroApi from '../../api/HeroApi';
 
 const validation = values => {
     let errors = {};
@@ -18,9 +19,20 @@ const SearchBlockForm = () => (
             search: '',
         }}
        onSubmit={(values, actions) => {
+           heroApi.getHeroBySearch(values.search)
+           .then(response=>{
+               console.log(response);
+           })
+           .catch(error=>{
+               console.log(error);
+           })
 
-            axios
-                .get(`https://superheroapi.com/api/10227290079499431/search/${values.search}`)
+            /*axios
+                .get(`http://superheroapi.com/api/10227290079499431/search/${values.search}`,{
+                    mode: 'no-cors',
+                    header: {
+                      'Access-Control-Allow-Origin':'*',
+                    }})
                 .then(response => {
                     console.log(response);
                     //localStorage.setItem("token", response.data.token);
@@ -28,7 +40,7 @@ const SearchBlockForm = () => (
                 })
                 .catch(error => {
                     console.log(error.response);
-                })
+                })*/
 
         }}
         validate={validation}

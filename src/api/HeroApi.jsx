@@ -15,7 +15,7 @@ const heroApi = (() => {
 
   const getHeroByName= search => new Promise((resolve, reject) => {
     axios
-      .get(`https://private-cors-server.herokuapp.com/${mainURL + token}/search/${search}`)
+      .get(`${mainURL + token}/search/${search}`)
       .then(data => {
         resolve(data.data);
         reject(new Error('something bad happened'));

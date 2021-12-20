@@ -29,6 +29,13 @@
 }
 
 .containerSearchBlock .form-group input{
+    background-color: #EBEDEC;
+    border: none;
+    border-bottom: 1px solid #002462;
+    border-radius: 0;
+    outline:none;
+   
+    box-shadow: none;
     width: 50%;
 }
 

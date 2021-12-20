@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-import axios from "axios"
 import SearchBlock from './SearchBlock';
 import heroApi from '../../api/HeroApi';
 
@@ -20,7 +19,7 @@ const SearchBlockForm = ({setData, setLoading, setError}) => (
         }}
        onSubmit={(values, actions) => {
            setLoading(true)
-           heroApi.getHeroBySearch(values.search)
+           heroApi.getHeroByName(values.search)
            .then(response=>{
                if(response.response ==="error"){
                    setError(response.error)

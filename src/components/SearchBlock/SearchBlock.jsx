@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap"
 import "./SearchBlock.css"
 
 export default function SearchBlock({ handleChange, handleSubmit, isSubmitting, resetForm, values, errors, touched }) {

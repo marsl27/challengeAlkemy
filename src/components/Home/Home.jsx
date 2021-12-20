@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Home.css"
 import SearchBlockForm from '../SearchBlock/SearchBlockForm';
 import Spinner from "../Spinner/Spinner";
-import Card from '../Cards/Card';
+import Cards from '../Cards/Cards';
 
 export default function Home() {
     const [data, setData] = useState([])
@@ -18,7 +18,7 @@ export default function Home() {
                 <Spinner />
             ) : (
                 <div>
-                  <p>busqueda</p>
+                  <Cards data={data} loading={loading}/>
                 </div>
             )}
         </>

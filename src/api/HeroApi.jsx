@@ -13,31 +13,17 @@ const heroApi = (() => {
       });
   });
 
-  const getHeroBySearch = search => new Promise((resolve, reject) => {
+  const getHeroByName= search => new Promise((resolve, reject) => {
     axios
-      .get(`${mainURL + token}/search/${search}`)
+      .get(`https://private-cors-server.herokuapp.com/${mainURL + token}/search/${search}`)
       .then(data => {
         resolve(data.data);
         reject(new Error('something bad happened'));
       });
   });
 
-  const getHeroByName = name => new Promise((resolve, reject) => {
-    axios
-      .get(
-        `https://private-cors-server.herokuapp.com/${
-          mainURL + token
-        }/search/${name}`,
-      )
-      .then(data => {
-        resolve(data.data.results);
-        reject(new Error('something bad happened'));
-      });
-  });
-
   return {
     getHeroByName,
-    getHeroBySearch,
     getHeroById,
   };
 })();

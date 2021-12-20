@@ -16,7 +16,7 @@
     min-width: 250px;
 }
 
-.form-row{
+.containerFormLogin .form-row{
    
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@
    width: 100%;
 }
 
-.form-label{
+.containerFormLogin .form-label{
     width: 100%;
     
 }
@@ -42,7 +42,7 @@
 
 
 
-.form-group input, .form-group input:focus, .form-group input:active{
+.containerFormLogin .form-group input, .containerFormLogin .form-group input:focus, .containerFormLogin .form-group input:active{
     background-color: #EBEDEC;
     border: none;
     border-bottom: 1px solid #002462;

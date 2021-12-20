@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const mainURL = 'https://superheroapi.com/api/';
+const mainURL = 'https://superheroapi.com/api.php/';
 const token = '10227290079499431';
 
 const heroApi = (() => {
@@ -15,7 +15,7 @@ const heroApi = (() => {
 
   const getHeroBySearch = search => new Promise((resolve, reject) => {
     axios
-      .get(`https://private-cors-server.herokuapp.com/${mainURL + token}/search/${search}`)
+      .get(`${mainURL + token}/search/${search}`)
       .then(data => {
         resolve(data.data);
         reject(new Error('something bad happened'));

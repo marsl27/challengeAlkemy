@@ -13,35 +13,30 @@ const validation = values => {
     return errors;
 }
 
-const SearchBlockForm = () => (
+const SearchBlockForm = ({setData, setLoading, setError}) => (
     <Formik
         initialValues={{
             search: '',
         }}
        onSubmit={(values, actions) => {
+           setLoading(true)
            heroApi.getHeroBySearch(values.search)
            .then(response=>{
-               console.log(response);
+               if(response.response ==="error"){
+                   setError(response.error)
+                   setData([]);
+               }else{
+                    setData(response.results);
+                    setError("")
+               }
+               
+               setLoading(false);
+               
            })
            .catch(error=>{
-               console.log(error);
+               setError(error.message);
+               setLoading(false);
            })
-
-            /*axios
-                .get(`http://superheroapi.com/api/10227290079499431/search/${values.search}`,{
-                    mode: 'no-cors',
-                    header: {
-                      'Access-Control-Allow-Origin':'*',
-                    }})
-                .then(response => {
-                    console.log(response);
-                    //localStorage.setItem("token", response.data.token);
-                   //window.location.pathname="/"
-                })
-                .catch(error => {
-                    console.log(error.response);
-                })*/
-
         }}
         validate={validation}
     >

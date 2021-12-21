@@ -1,12 +1,13 @@
 import Card from "./Card";
+import "./Cards.css"
 
+export default function Cards({ data, loading }) {
 
-export default function Cards({data, loading}){
-    
     return (
-        
-        data.map((hero, index)=>{
-            return <Card name={hero.name} image={hero.image.url} key={index}/>
-        })
+        <div className="containerCards">
+            {data.map((hero, index) => {
+                return <Card name={hero.name} image={hero.image.url} key={index} />
+            })}
+        </div>
     )
 }

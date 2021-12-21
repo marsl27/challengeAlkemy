@@ -1,31 +1,42 @@
 .containerSearchBlock{
-    background-color: #2575ff;
-   
-    height: 12vh;
-    padding: 0 30px;
+  
+   background: linear-gradient(#002462, black);
+    height: 20vh;
+    padding: 10px 30px;
+    text-align: center;
     width: 100%;
+    
+}
+
+.containerSearchBlock h3, .containerSearchBlock h4{
+    color:white;
+    z-index: 100;
 }
 
 .containerSearchBlock form{
     height: 100%;
     width: 100%;
-   
+  
 }
 
 .containerSearchBlock .form-group{
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+
     justify-content: center;
     width: 100%;
+}
+
+.containerSearchBlock .form-group h3{
+    z-index: 100;
 }
 
 .containerSearchBlock .form-group div{
     display: flex;
     justify-content: space-evenly;
    width: 80%;
-   
+   z-index: 100;
 }
 
 .containerSearchBlock .form-group input{

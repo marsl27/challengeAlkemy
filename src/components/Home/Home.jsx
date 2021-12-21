@@ -17,9 +17,9 @@ export default function Home() {
             {loading ? (
                 <Spinner />
             ) : (
-                <div>
+               
                   <Cards data={data} loading={loading}/>
-                </div>
+               
             )}
         </>
     );

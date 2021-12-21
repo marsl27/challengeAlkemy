@@ -2,18 +2,27 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+    height: calc(100vh - 99px - 58px);
     justify-content: center;
 }
 
 .containerFormLogin form{
     display: flex;
+    flex-direction: column;
     height:27%;
+    justify-content: flex-end;
     max-height: 320px;
     min-height: 270px;
     width: 32%;
     max-width: 800px;
     min-width: 250px;
+    z-index: 100;
+    background-color: rgba(0, 36, 98,0.8);
+}
+
+.containerFormLogin form h2{
+    color: white;
+    text-align: center;
 }
 
 .containerFormLogin .form-row{
@@ -21,7 +30,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    height: 75%;
+    justify-content: space-evenly;
    width: 100%;
 }
 
@@ -30,25 +40,38 @@
     
 }
 
-.btn-primary{
-    background-color: #002462;
+.loginButton{
+    background-color: #B31C31;
+    border: 1px solid #7c1321;
+    
+    transition: all 0.7s;
 }
 
-
-.btn-primary:hover{
-    background-color: #C0CBDC;
-    color: #002462;
+.loginButton:hover{
+    background-color: #c02d41;
+    transform: scale(1.1);
 }
 
-
+.loginButton a{
+    color: white;
+}
 
 .containerFormLogin .form-group input, .containerFormLogin .form-group input:focus, .containerFormLogin .form-group input:active{
-    background-color: #EBEDEC;
+    background-color: inherit;
     border: none;
-    border-bottom: 1px solid #002462;
+    border-bottom: 2px solid white;
     border-radius: 0;
+    color: white;
     outline:none;
-   
     box-shadow: none;
    
 }
+.containerFormLogin .form-group input::placeholder, .errors{
+    color: white;
+}
+
+.errors{
+    font-size: 13px;
+    padding-left: 12px;
+}
+

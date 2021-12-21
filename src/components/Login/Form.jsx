@@ -4,11 +4,12 @@ import "./Login.css"
 
 const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, errors, touched }) => (
     <div className="containerFormLogin">
-        <h2 className="titleLogin">Iniciar sesión</h2>
+
         <form onSubmit={handleSubmit}>
+            <h2 className="titleLogin">Iniciar sesión</h2>
             <div className="form-row">
                 <div className="form-group col-11">
-                    <label className="form-label">Email</label>
+                    
                     <input
                         type="email"
                         className="form-control"
@@ -16,11 +17,12 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
                         //onBlur={props.handleBlur}
                         value={values.email}
                         name="email"
+                        placeholder="Email"
                     />
-                    {errors.email && <div>{errors.email}</div>}
+                    {errors.email && <div className="errors">{errors.email}</div>}
                 </div>
                 <div className="form-group col-11">
-                    <label className="form-label">Contraseña</label>
+                   
                     <input
                         type="password"
                         className="form-control"
@@ -28,11 +30,12 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
                         //onBlur={props.handleBlur}
                         value={values.password}
                         name="password"
+                        placeholder="Password"
                     />
-                    {errors.password && <div>{errors.password}</div>}
+                    {errors.password && <div className="errors">{errors.password}</div>}
                 </div>
 
-                <button type="submit" className="btn btn-primary col-5" >Enviar</button>
+                <button type="submit" className="btn btn-primary col-5 loginButton" >Enviar</button>
             </div>
         </form>
     </div>

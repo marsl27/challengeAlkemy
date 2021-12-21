@@ -10,7 +10,7 @@ export default function Header() {
                 <img src={icon} />
                 <h1>SuperTeam</h1>
             </Link>
-            <button className="btn btn-outline-primary"> <Link to="/login">Login</Link></button>
+            <button className="btn btn-outline-primary loginButton"> <Link to="/login">Login</Link></button>
         </div>
     )
 }

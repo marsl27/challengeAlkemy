@@ -7,7 +7,26 @@
 
 
 main {
-  background-color: #EBEDEC;
+  min-height: calc(100vh - 58px - 99px);
+  padding-bottom: 58px;
   position: relative;
   top:99px;
+  
+}
+
+main::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  
+  opacity: 1;
+  background-image: url("https://fondosmil.com/th/29567.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+
 }

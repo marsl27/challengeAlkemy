@@ -28,5 +28,6 @@ main::before{
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
-
+  background-repeat: repeat-y;
+  z-index: -20;
 }

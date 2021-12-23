@@ -1,0 +1,41 @@
+#containerHero{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 99px - 58px);
+    padding: 40px;
+    width: 100%;
+    z-index: 100;
+}
+
+.containerImageInfo{
+    display: flex;
+   
+}
+
+.containerImage img{
+    border-radius: 20px;
+    width: 30vw;
+}
+
+#containerInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+#containerHero h2{
+    color:white;
+    text-transform: uppercase;
+}
+
+#containerHero h3{
+    color:white;
+    opacity: 0.8;
+}
+
+#containerInfo p{
+    font-size: 20px;
+    color: white;
+    opacity: 0.6;
+}

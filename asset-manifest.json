@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/challengeAlkemy/static/css/main.dd7de456.css",
-    "main.js": "/challengeAlkemy/static/js/main.4f09f0db.js",
+    "main.css": "/challengeAlkemy/static/css/main.6d16dfeb.css",
+    "main.js": "/challengeAlkemy/static/js/main.a94cb926.js",
     "static/media/iconoEscudo.png": "/challengeAlkemy/static/media/iconoEscudo.abc738e9a9e9dc47c33f.png",
     "index.html": "/challengeAlkemy/index.html",
-    "main.dd7de456.css.map": "/challengeAlkemy/static/css/main.dd7de456.css.map",
-    "main.4f09f0db.js.map": "/challengeAlkemy/static/js/main.4f09f0db.js.map"
+    "main.6d16dfeb.css.map": "/challengeAlkemy/static/css/main.6d16dfeb.css.map",
+    "main.a94cb926.js.map": "/challengeAlkemy/static/js/main.a94cb926.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd7de456.css",
-    "static/js/main.4f09f0db.js"
+    "static/css/main.6d16dfeb.css",
+    "static/js/main.a94cb926.js"
   ]
 }

@@ -31,3 +31,11 @@
     
 }
 
+.card-body h5{
+    text-align: center;
+}
+.containerButtons{
+    display: flex;
+    justify-content: space-evenly;
+
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import heroApi from "../../api/HeroApi";
 import "./Hero.css"
+import BarraPowerstats from "./BarraPowerstats";
 
 export default function Hero() {
     let { id } = useParams()
@@ -16,7 +17,7 @@ export default function Hero() {
         work: "",
         weight: "",
         height: "",
-        powerstats: {},
+        powerstats: {intelligence: 0},
     });
     const [error, setError] = useState();
 
@@ -60,13 +61,13 @@ export default function Hero() {
             })
     }, [id])
 
-
-    console.log(hero.powerstats.intelligence);
+    let powerstatsKeys = Object.keys(hero.powerstats)
+    console.log(hero.powerstats);
     console.log(hero);
     return (
         <div id="containerHero">
             <div className="containerImageInfo">
-                <div className="containerImage">
+                <div className="containerImageHero">
                     <img src={hero.image} alt={hero.name} />
                 </div>
                 <div id="containerInfo">
@@ -83,10 +84,14 @@ export default function Hero() {
             </div>
             <div className="containerPowerstats">
                 <h2>Powerstats</h2>
-                <p>Intelligence</p>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style={{ width: `${hero.powerstats.intelligence}%` }} aria-valuenow={`${hero.powerstats.intelligence}`} aria-valuemin="0" aria-valuemax="100">{`${hero.powerstats.intelligence}%`}</div>
-                </div>
+                {powerstatsKeys.map((power) => {
+                    if (Object.hasOwnProperty.call(hero.powerstats, power)) {
+                        return(
+                        <BarraPowerstats powerstatKey={power} powerstatValue={hero.powerstats[power]}/>
+                        )
+                    }
+                })}
+                
             </div>
         </div>
     )

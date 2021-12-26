@@ -13,7 +13,7 @@
    
 }
 
-.containerImage img{
+.containerImageHero img{
     border-radius: 20px;
     width: 30vw;
 }
@@ -38,4 +38,12 @@
     font-size: 20px;
     color: white;
     opacity: 0.6;
+}
+
+.containerPowerstats p{
+    color: white;
+    opacity: 0.6;
+}
+.containerPowerstats p::first-letter{
+    text-transform: capitalize;
 }

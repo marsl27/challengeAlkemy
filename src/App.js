@@ -11,16 +11,16 @@ import Hero from './components/Hero/Hero';
 //localStorage.getItem("token") ? <Home/> : <Login/>}/> PONER EN EL HOME PARA QUE REDIRIJA AL LOGIN SI NO ESTA LOGUEADO
 
 function App() {
-  const [isLogged, setIsLogged] = useState(localStorage.getItem("log") === "true" ? true : false)
+  const [isLogged, setIsLogged] = useState(sessionStorage.getItem("log") === "true" ? true : false)
   //const [dataHero, setDataHero] = useState()
 
   return (
     <BrowserRouter>
       <LayoutPrincipal isLogged = {isLogged}>
         <Routes>
-          <Route exact path="/challengeAlkemy" element={localStorage.getItem("token") ? <Home/> : <Navigate to="/login"/>}/>
-          <Route exact path="/login" element={<Login/>}/>
-          <Route exact path="/hero/:id" element={localStorage.getItem("token") ? <Hero/> : <Navigate to="/login"/>} />
+          <Route exact path="/challengeAlkemy" element={sessionStorage.getItem("token") ? <Home/> : <Navigate to="/login"/>}/>
+          <Route exact path="/login" element={!isLogged ? <Login/> : <Navigate to="/challengeAlkemy"/>}/>
+          <Route exact path="/hero/:id" element={sessionStorage.getItem("token") ? <Hero/> : <Navigate to="/login"/>} />
         </Routes>
       </LayoutPrincipal>
     </BrowserRouter>

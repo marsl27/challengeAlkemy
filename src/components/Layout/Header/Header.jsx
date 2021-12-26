@@ -16,9 +16,9 @@ export default function Header({ isLogged }) {
     }
 
     function handleLogOut(){
-        localStorage.removeItem("token")
-        localStorage.removeItem("email")
-        localStorage.setItem("log", "false")
+        sessionStorage.removeItem("token")
+        sessionStorage.removeItem("email")
+        sessionStorage.setItem("log", "false")
     }
 //<button className={isLogged ? "hide" : "btn btn-outline-primary loginButton log"}> <Link to="/login">Login</Link></button>
            
@@ -32,7 +32,7 @@ export default function Header({ isLogged }) {
                 <div className={!isLogged ? "hide" : "containerUser"} >
                     <div className="user">
                         <h3 >Hola,</h3>
-                        <h3 >{localStorage.getItem("email")}</h3>
+                        <h3 >{sessionStorage.getItem("email")}</h3>
                     </div>
                     <span className="arrow"></span>
                 </div>

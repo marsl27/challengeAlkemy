@@ -35,9 +35,9 @@ const Login = () => (
                 })
                 .then(response => {
                     console.log(response);
-                    localStorage.setItem("log", "true")
-                    localStorage.setItem("token", response.data.token);
-                    localStorage.setItem("email", values.email);
+                    sessionStorage.setItem("log", "true")
+                    sessionStorage.setItem("token", response.data.token);
+                    sessionStorage.setItem("email", values.email);
                     window.location.pathname="/challengeAlkemy"
                 })
                 .catch(error => {

@@ -7,7 +7,7 @@ import Spinner from "../Spinner/Spinner"
 
 export default function Hero() {
     let { id } = useParams()
-    const [loading, setLoading] = useState(false)
+   
     //const [error, setError] = useState("")
 
     const [hero, setHero] = useState({
@@ -23,10 +23,12 @@ export default function Hero() {
         powerstats: { intelligence: 0 },
     });
     const [error, setError] = useState();
-
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
+        
         heroApi.getHeroById(id)
             .then(response => {
+                
                 if (response.response === "error") {
                     console.log(response);
                     setError(response.error)
@@ -57,6 +59,7 @@ export default function Hero() {
                         powerstats: response.powerstats
                     });
                     setError("")
+                    setLoading(false)
                 }
             })
             .catch(error => {

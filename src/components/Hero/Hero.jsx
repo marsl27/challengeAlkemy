@@ -3,9 +3,12 @@ import { useParams } from "react-router"
 import heroApi from "../../api/HeroApi";
 import "./Hero.css"
 import BarraPowerstats from "./BarraPowerstats";
+import Spinner from "../Spinner/Spinner"
 
 export default function Hero() {
     let { id } = useParams()
+    const [loading, setLoading] = useState(false)
+    //const [error, setError] = useState("")
 
     const [hero, setHero] = useState({
         id: id,
@@ -17,7 +20,7 @@ export default function Hero() {
         work: "",
         weight: "",
         height: "",
-        powerstats: {intelligence: 0},
+        powerstats: { intelligence: 0 },
     });
     const [error, setError] = useState();
 
@@ -65,34 +68,40 @@ export default function Hero() {
     console.log(hero.powerstats);
     console.log(hero);
     return (
-        <div id="containerHero">
-            <div className="containerImageInfo">
-                <div className="containerImageHero">
-                    <img src={hero.image} alt={hero.name} />
+        <>
+            {loading ? (
+                <Spinner />
+            ) : (
+                <div id="containerHero">
+                    <div className="containerImageInfo">
+                        <div className="containerImageHero">
+                            <img src={hero.image} alt={hero.name} />
+                        </div>
+                        <div id="containerInfo">
+                            <h2>{hero.name}</h2>
+                            {hero.aliases.map((h) => {
+                                return <h3>{h}</h3>
+                            })}
+                            <p>Eye-color: {hero["eye-color"]}</p>
+                            <p>hair-color: {hero["hair-color"]}</p>
+                            <p>Height: {hero.height}</p>
+                            <p>Weight: {hero.weight}</p>
+                            <p>Work: {hero.work.occupation}</p>
+                        </div>
+                    </div>
+                    <div className="containerPowerstats">
+                        <h2>Powerstats</h2>
+                        {powerstatsKeys.map((power) => {
+                            if (Object.hasOwnProperty.call(hero.powerstats, power)) {
+                                return (
+                                    <BarraPowerstats powerstatKey={power} powerstatValue={hero.powerstats[power]} />
+                                )
+                            }
+                        })}
+
+                    </div>
                 </div>
-                <div id="containerInfo">
-                    <h2>{hero.name}</h2>
-                    {hero.aliases.map((h) => {
-                        return <h3>{h}</h3>
-                    })}
-                    <p>Eye-color: {hero["eye-color"]}</p>
-                    <p>hair-color: {hero["hair-color"]}</p>
-                    <p>Height: {hero.height}</p>
-                    <p>Weight: {hero.weight}</p>
-                    <p>Work: {hero.work.occupation}</p>
-                </div>
-            </div>
-            <div className="containerPowerstats">
-                <h2>Powerstats</h2>
-                {powerstatsKeys.map((power) => {
-                    if (Object.hasOwnProperty.call(hero.powerstats, power)) {
-                        return(
-                        <BarraPowerstats powerstatKey={power} powerstatValue={hero.powerstats[power]}/>
-                        )
-                    }
-                })}
-                
-            </div>
-        </div>
+            )
+            }</>
     )
 }

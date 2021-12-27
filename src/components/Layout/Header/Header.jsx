@@ -38,7 +38,7 @@ export default function Header({ isLogged }) {
                 </div>
             </div>
             <div className={userMenu ? "headerOptions userOptions" : "hide"} /* className={Styles.closeNav} */ /* */>
-                <Link to="/">
+                <Link to="/myteam">
                     <h5> Mi equipo</h5>
                 </Link>
                 

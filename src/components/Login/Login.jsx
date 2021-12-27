@@ -29,7 +29,7 @@ const Login = () => (
         onSubmit={(values, actions) => {
 
             axios
-                .post("//challenge-react.alkemy.org/", {
+                .post("https://private-cors-server.herokuapp.com/http://challenge-react.alkemy.org/", {
                     email: values.email,
                     password: values.password
                 })

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
 
 export default function Card({ id, image, name }) {
+
+    function handleClick(){
+        console.log(id);
+    }
+
     return (
         <div className="card" style={{ width: "19rem" }}>
             <div className="containerImage">
@@ -9,7 +14,7 @@ export default function Card({ id, image, name }) {
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <div className="containerButtons">
-                <button className="btn btn-primary" >Agregar</button>
+                <button className="btn btn-primary" onClick={handleClick}>Agregar</button>
                 <Link to={`/hero/${id}`}><button className="btn btn-secondary" >Ver más</button></Link>
                 </div>
             </div>

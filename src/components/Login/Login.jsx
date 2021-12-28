@@ -29,7 +29,7 @@ const Login = () => (
         onSubmit={(values, actions) => {
 
             axios
-                .post("//challenge-react.alkemy.org/", {
+                .post("http://challenge-react.alkemy.org/", {
                     email: values.email,
                     password: values.password
                 })

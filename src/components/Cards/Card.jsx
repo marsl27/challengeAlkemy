@@ -12,7 +12,8 @@ export default function Card({ id, image, name, setData, setLoading, setError, d
                 setError(response.error)
                 setTeam([]);
             }else{
-                if(!team.find(hero => hero.id ===response.id)){
+                if(team.length < 6 && !team.find(hero => hero.id ===response.id)){
+                    console.log(team.length);
                     setTeam([...team,response]);
                     setError("")
                 }

@@ -1,5 +1,5 @@
 .footer{
-    background-color: #002462;
+    background: linear-gradient(black,#002462);
     bottom: 0;
     color: #EBEDEC;
     display: flex;

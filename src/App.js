@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/challengeAlkemy" element={sessionStorage.getItem("token") ? <Home setData={setData} setLoading={setLoading} setError={setError} team={team} loading={loading} setTeam={setTeam}/> : <Navigate to="/login"/>}/>
           <Route exact path="/login" element={!isLogged ? <Login/> : <Navigate to="/challengeAlkemy"/>}/>
           <Route exact path="/hero/:id" element={sessionStorage.getItem("token") ? <Hero/> : <Navigate to="/login"/>} />
-          <Route exact path="/search/:value" element={sessionStorage.getItem("token") ? <Search setData={setData} setLoading={setLoading} setError={setError} data={data} loading={loading} setTeam={setTeam} /> : <Navigate to="/login"/>} />
+          <Route exact path="/search/:value" element={sessionStorage.getItem("token") ? <Search setData={setData} setLoading={setLoading} setError={setError} data={data} loading={loading} team={team} setTeam={setTeam} /> : <Navigate to="/login"/>} />
         </Routes>
       </LayoutPrincipal>
     </BrowserRouter>

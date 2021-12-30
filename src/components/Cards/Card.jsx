@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import heroApi from "../../api/HeroApi";
 
-export default function Card({ id, image, name, setData, setLoading, setError, data, setTeam }) {
+export default function Card({ id, image, name, setData, setLoading, setError, data, setTeam, team }) {
     
     function handleClick(){
         console.log(id);
@@ -12,8 +12,13 @@ export default function Card({ id, image, name, setData, setLoading, setError, d
                 setError(response.error)
                 setTeam([]);
             }else{
-                 setTeam([...data,response]);
-                 setError("")
+                if(!team.find(hero => hero.id ===response.id)){
+                    setTeam([...team,response]);
+                    setError("")
+                }
+                 
+                 console.log(team);
+                 console.log(response);
             }
             
             setLoading(false);
@@ -23,9 +28,10 @@ export default function Card({ id, image, name, setData, setLoading, setError, d
             setError(error.message);
             setLoading(false);
         })
-        console.log(data);
+      
     }
     console.log(data);
+    console.log(team);
     return (
         <div className="card" style={{ width: "19rem" }}>
             <div className="containerImage">

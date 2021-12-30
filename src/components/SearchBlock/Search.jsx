@@ -5,7 +5,7 @@ import Cards from '../Cards/Cards';
 import { useParams } from "react-router"
 import heroApi from '../../api/HeroApi';
 
-export default function Search({setData, setLoading, setError,data, loading, setTeam }) {
+export default function Search({setData, setLoading, setError,data, loading, team, setTeam }) {
 console.log("se renderizo");
 let { value } = useParams()
 
@@ -42,7 +42,7 @@ useEffect(()=>{
                 <Spinner />
             ) : (
                
-                  <Cards data={data} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError}/>
+                  <Cards data={data} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError} team={team}/>
                
             )}
         </>

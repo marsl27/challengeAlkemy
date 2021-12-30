@@ -15,7 +15,7 @@
     min-height: 270px;
     width: 32%;
     max-width: 800px;
-    min-width: 250px;
+    min-width: 370px;
     z-index: 100;
     background-color: rgba(0, 36, 98,0.8);
 }
@@ -75,3 +75,9 @@
     padding-left: 12px;
 }
 
+@media all and (max-width: 414px) {
+    .containerFormLogin form{
+        height:30%;
+        min-width: 300px;
+    }
+}

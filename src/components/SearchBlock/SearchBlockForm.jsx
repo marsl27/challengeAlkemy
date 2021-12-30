@@ -6,7 +6,7 @@ const validation = values => {
     let errors = {};
 
     if (!values.search) {
-        errors.search = 'El campo no puede estar vacio';
+        errors.search = 'Search is required!';
     }
 
     return errors;
@@ -17,13 +17,16 @@ const SearchBlockForm = ({setData, setLoading, setError}) => (
         initialValues={{
             search: '',
         }}
-       onSubmit={(values, actions) => {
+       /*onSubmit={(values, actions) => {
            setLoading(true)
            heroApi.getHeroByName(values.search)
            .then(response=>{
+           
                if(response.response ==="error"){
+                   console.log(response);
                    setError(response.error)
                    setData([]);
+                   
                }else{
                     setData(response.results);
                     setError("")
@@ -36,7 +39,7 @@ const SearchBlockForm = ({setData, setLoading, setError}) => (
                setError(error.message);
                setLoading(false);
            })
-        }}
+        }}*/
         validate={validation}
     >
         {props => <SearchBlock {...props} />}

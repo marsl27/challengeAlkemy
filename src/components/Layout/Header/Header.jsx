@@ -31,7 +31,7 @@ export default function Header({ isLogged }) {
              <div onMouseMove={handleShowNav} >
                 <div className={!isLogged ? "hide" : "containerUser"} >
                     <div className="user">
-                        <h3 >Hola,</h3>
+                        <h3 >Hello,</h3>
                         <h3 >{sessionStorage.getItem("email")}</h3>
                     </div>
                     <span className="arrow"></span>
@@ -39,10 +39,10 @@ export default function Header({ isLogged }) {
             </div>
             <div className={userMenu ? "headerOptions userOptions" : "hide"} /* className={Styles.closeNav} */ /* */>
                 <Link to="/myteam">
-                    <h5> Mi equipo</h5>
+                    <h5> My SuperTeam</h5>
                 </Link>
                 
-                <h5><a href="/login" onClick={handleLogOut}>Cerrar sesión</a> </h5>
+                <h5><a href="/login" onClick={handleLogOut}>Log out</a> </h5>
             </div>
         </div>
     )

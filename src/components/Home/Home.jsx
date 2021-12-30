@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./Home.css"
 import SearchBlockForm from '../SearchBlock/SearchBlockForm';
 import Spinner from "../Spinner/Spinner";
 import Cards from '../Cards/Cards';
 
-export default function Home() {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState("")
-
-    console.log(data);
-    console.log(error);
+export default function Home({setData, setLoading, setError, team, loading, setTeam}) {
+    
     return (
         <>
         <SearchBlockForm setData={setData} setLoading={setLoading} setError={setError} />
+        
+               
             {loading ? (
                 <Spinner />
             ) : (
                
-                  <Cards data={data} loading={loading}/>
+                  <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError}/>
                
             )}
         </>

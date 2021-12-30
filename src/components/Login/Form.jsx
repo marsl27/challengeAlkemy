@@ -6,7 +6,7 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
     <div className="containerFormLogin">
 
         <form onSubmit={handleSubmit}>
-            <h2 className="titleLogin">Iniciar sesión</h2>
+            <h2 className="titleLogin">Log in</h2>
             <div className="form-row">
                 <div className="form-group col-11">
                     
@@ -35,7 +35,7 @@ const Form = ({ handleChange, handleSubmit, isSubmitting, resetForm, values, err
                     {errors.password && <div className="errors">{errors.password}</div>}
                 </div>
 
-                <button type="submit" className="btn btn-primary col-5 loginButton" >Enviar</button>
+                <button type="submit" className="btn btn-primary col-5 loginButton" >Send</button>
             </div>
         </form>
     </div>

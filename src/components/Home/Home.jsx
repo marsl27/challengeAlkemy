@@ -6,6 +6,7 @@ import Cards from '../Cards/Cards';
 
 export default function Home({ setData, setLoading, setError, team, loading, setTeam }) {
     console.log(team);
+    let isTeam = true //Es para mostrar las powerstats en la card si es el equipo
     return (
         <>
             <SearchBlockForm setData={setData} setLoading={setLoading} setError={setError} />
@@ -15,7 +16,7 @@ export default function Home({ setData, setLoading, setError, team, loading, set
                 <Spinner />
             ) : (
                 <> 
-                    <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError} />
+                    <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError} isTeam={isTeam}/>
                 </>
             )}
         </>

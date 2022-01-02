@@ -9,6 +9,8 @@ export default function Search({setData, setLoading, setError,data, loading, tea
 console.log("se renderizo");
 let { value } = useParams()
 
+let isTeam = false //Esta en falso para evitar mostrar las powerstats en la card al buscar
+
 useEffect(()=>{
     setLoading(true);
     heroApi.getHeroByName(value)
@@ -42,7 +44,7 @@ useEffect(()=>{
                 <Spinner />
             ) : (
                
-                  <Cards data={data} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError} team={team}/>
+                  <Cards data={data} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError} team={team} isTeam={isTeam}/>
                
             )}
         </>

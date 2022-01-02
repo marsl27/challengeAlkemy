@@ -1,7 +1,7 @@
 .containerCards{ 
     display: grid;
-    grid-gap: 30px 50px;
-    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    grid-gap: 30px 60px;
+    grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
     grid-template-rows: repeat(auto-fill, 1fr);
     padding: 20px;
     z-index: 100;
@@ -9,6 +9,7 @@
 
 .card{
     border-radius: 10px;
+    justify-self: center;
     transition: all 0.8s;
 }
 
@@ -37,5 +38,5 @@
 .containerButtons{
     display: flex;
     justify-content: space-evenly;
-
+    margin-top: 10px;
 }

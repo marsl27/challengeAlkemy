@@ -65,7 +65,7 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
     console.log(changeButton());
     console.log(team);
     return (
-        <div className="card" style={{ width: "19rem" }}>
+        <div className="card" style={{ width: "22rem" }}>
             <div className="containerImage">
                 <img className="card-img-top" src={image} alt={name} />
             </div>

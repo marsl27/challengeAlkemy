@@ -47,3 +47,8 @@
 .containerPowerstats p::first-letter{
     text-transform: capitalize;
 }
+
+.titlePowerstat{
+    margin-bottom: 2px;
+    text-transform: capitalize;
+}

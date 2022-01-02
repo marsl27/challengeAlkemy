@@ -1,9 +1,10 @@
-
+import { useState } from "react";
 import heroApi from "../../api/HeroApi";
 import Card from "./Card";
 import "./Cards.css"
 
 export default function Cards({ data, loading,setLoading, setError, setTeam, team, isTeam}) {
+
     console.log(data);
     //const [team, setTeam]=useState([])
     console.log(team);

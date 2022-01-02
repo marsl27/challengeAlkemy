@@ -53,7 +53,7 @@ const Login = () => (
                     console.log(window.location.pathname)
                     if (window.location.pathname === "/login" && values.email === credentials.email && values.password === credentials.password) {
                         sessionStorage.setItem("log", "true")
-                        sessionStorage.setItem("token", "l");
+                        sessionStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJjaGFsbGVuZ2VAYWxrZW15Lm9yZyIsImlhdCI6MTUxNjIzOTAyMn0.ilhFPrG0y7olRHifbjvcMOlH7q2YwlegT0f4aSbryBE");
                         sessionStorage.setItem("email", values.email);
                         window.location.pathname = "/challengeAlkemy"
                     }

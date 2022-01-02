@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import heroApi from "../../api/HeroApi";
 import BarraPowerstats from "../Hero/BarraPowerstats";
+import Swal from "sweetalert2";
 
 export default function Card({ id, image, name, powerstats, setData, setLoading, setError, data, setTeam, team, isTeam }) {
 
+    
     function handleClickAdd() {
         console.log(id);
+        
         heroApi.getHeroById(id)
             .then(response => {
                 console.log(response);
@@ -13,10 +17,36 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
                     setError(response.error)
                     setTeam([]);
                 } else {
-                    if (team.length < 6 && !team.find(hero => hero.id === response.id)) {
-
-                        setTeam([...team, response]);
-                        setError("")
+                    if (team.length < 6) {
+                        let good = 0;
+                        let bad = 0;
+                        team.map((hero) => {
+                            if(hero.biography.alignment === "good"){
+                                good++
+                            }else if(hero.biography.alignment === "bad"){
+                                bad++
+                            }
+                        })
+                        if(response.biography.alignment === "bad" && bad<3){
+                            setTeam([...team, response]);
+                        
+                        } else if(response.biography.alignment === "good" && good<3){
+                            setTeam([...team, response]);
+                          
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Only 3 members of each orientation',
+                            })
+                        }
+                        
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'You can only have 6 members in your team!',
+                        })
                     }
 
                     console.log(team);
@@ -32,7 +62,7 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
             })
 
     }
-    console.log(data);
+   
     function handleClickRemove() {
         let datos = isTeam ? data : team
         let aux = datos;
@@ -43,14 +73,16 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
         })
 
         setTeam(aux)
-       
+
     }
 
     function changeButton() {
 
         if (isTeam || team.find((hero) => hero.id === id)) {
+
             return "Remove"
         } else if (isTeam) {
+
             return "Remove"
         }
         else {

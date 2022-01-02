@@ -6,7 +6,7 @@ import axios from "axios"
 import Swal from 'sweetalert2'
 
 const credentials = {
-    email: "challenge@alkemy.or",
+    email: "challenge@alkemy.org",
     password: "react"
 }
 const validation = values => {

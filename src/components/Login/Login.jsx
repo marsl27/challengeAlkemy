@@ -6,7 +6,7 @@ import axios from "axios"
 import Swal from 'sweetalert2'
 
 const credentials = {
-    email: "challenge@alkemy.org",
+    email: "challenge@alkemy.or",
     password: "react"
 }
 const validation = values => {
@@ -44,24 +44,22 @@ const Login = () => (
                     window.location.pathname = "/challengeAlkemy"
                 })
                 .catch(error => {
-                    
-                    console.log(values.password);
+                    console.log(error);
+
+                })
+                .finally(() => {
                     //Hardcodee las credenciales para que funcione con github pages ya que no funcionaba por error de mixed content debido a que la url de la app es https y el endpoint
                     //que entrega el token es http
-                    if (values.email === credentials.email && values.password === credentials.password) {
+                    console.log(window.location.pathname)
+                    if (window.location.pathname === "/login" && values.email === credentials.email && values.password === credentials.password) {
                         sessionStorage.setItem("log", "true")
                         sessionStorage.setItem("token", "l");
                         sessionStorage.setItem("email", values.email);
                         window.location.pathname = "/challengeAlkemy"
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Something went wrong!',
-                        })
-                      console.log(error);
                     }
                 })
+
+
 
         }}
         validate={validation}

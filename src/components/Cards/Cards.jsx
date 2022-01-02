@@ -6,7 +6,7 @@ import "./Cards.css"
 export default function Cards({ data, loading,setLoading, setError, setTeam, team, isTeam}) {
     console.log(data);
     //const [team, setTeam]=useState([])
-    console.log(data);
+    console.log(team);
     return (
         <div className="containerCards">
            

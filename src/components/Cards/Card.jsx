@@ -14,7 +14,7 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
                     setTeam([]);
                 } else {
                     if (team.length < 6 && !team.find(hero => hero.id === response.id)) {
-                      
+
                         setTeam([...team, response]);
                         setError("")
                     }
@@ -32,52 +32,57 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
             })
 
     }
-
+    console.log(data);
     function handleClickRemove() {
-        let aux= team;
-        console.log( aux.find((hero)=>hero.id ===id) );
-       
-        aux= aux.filter((hero) =>{
+        let datos = isTeam ? data : team
+        let aux = datos;
+
+        aux = aux.filter((hero) => {
             console.log(hero.id);
             return hero.id != id
         })
-        console.log(aux);
+
         setTeam(aux)
-        console.log(team);
+       
     }
-    console.log(team);
+
     function changeButton() {
-        if (team.find((hero)=>hero.id ===id) ) {
+
+        if (isTeam || team.find((hero) => hero.id === id)) {
             return "Remove"
-        } else {
+        } else if (isTeam) {
+            return "Remove"
+        }
+        else {
+            console.log("segundo");
             return "Add"
-        } 
+        }
     }
 
 
 
-let powerstatsKeys = powerstats !== null ? Object.keys(powerstats) : null;
-console.log(data);
-console.log(team);
-return (
-    <div className="card" style={{ width: "19rem" }}>
-        <div className="containerImage">
-            <img className="card-img-top" src={image} alt={name} />
-        </div>
-        <div className="card-body">
-            <h5 className="card-title">{name}</h5>
-            {powerstatsKeys !== null ? powerstatsKeys.map((power) => {
-                if (Object.hasOwnProperty.call(powerstats, power)) {
-                    return (
-                        <BarraPowerstats powerstatKey={power} powerstatValue={powerstats[power]} />
-                    )
-                }
-            }) : null}
-            <div className="containerButtons">
-                <button className="btn btn-primary" onClick={changeButton() ==="Add" ? handleClickAdd : handleClickRemove}>{changeButton()}</button>
-                <Link to={`/hero/${id}`}><button className="btn btn-secondary" >More</button></Link>
+    let powerstatsKeys = powerstats !== null ? Object.keys(powerstats) : null;
+    console.log(changeButton());
+    console.log(team);
+    return (
+        <div className="card" style={{ width: "19rem" }}>
+            <div className="containerImage">
+                <img className="card-img-top" src={image} alt={name} />
+            </div>
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                {powerstatsKeys !== null ? powerstatsKeys.map((power) => {
+                    if (Object.hasOwnProperty.call(powerstats, power)) {
+                        return (
+                            <BarraPowerstats powerstatKey={power} powerstatValue={powerstats[power]} />
+                        )
+                    }
+                }) : null}
+                <div className="containerButtons">
+                    <button className="btn btn-primary" onClick={changeButton() === "Add" ? handleClickAdd : handleClickRemove}>{changeButton()}</button>
+                    <Link to={`/hero/${id}`}><button className="btn btn-secondary" >More</button></Link>
+                </div>
             </div>
         </div>
-    </div>
-)
+    )
 }

@@ -37,7 +37,7 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Only 3 members of each orientation',
+                                text: 'Up to 3 members of each orientation',
                             })
                         }
                         

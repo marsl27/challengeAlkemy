@@ -1,0 +1,36 @@
+.containerCard{
+    background-color: black;
+    display: flex;
+    margin: auto;
+    opacity: 0.8;
+    width: 98%;
+    
+}
+.title{
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+.containerTotalPowerstats{
+    
+    display: grid;
+    grid-template-columns: repeat(6, minmax(150px,1fr));
+    
+}
+
+.containerTotalPowerstats p{
+    color: white;
+    font-size: 18px;
+    justify-self: center;
+    text-transform: capitalize;
+}
+
+.hide{
+    display: none;
+}
+
+@media all and (max-width: 1000px) {
+    .containerTotalPowerstats{
+        grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+    }
+  }

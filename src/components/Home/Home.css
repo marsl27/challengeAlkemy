@@ -1,9 +1,9 @@
 .containerCard{
-    background-color: black;
+    background-color: #002462;
     display: flex;
     margin: auto;
-    opacity: 0.8;
-    width: 98%;
+    opacity: 0.9;
+    
     
 }
 .title{
@@ -22,12 +22,24 @@
     color: white;
     font-size: 18px;
     justify-self: center;
+    padding: 10px 25px;
     text-transform: capitalize;
 }
 
+.containerTotalPowerstats p:nth-child(1){
+    background-color: #B31C31;
+    border-radius: 10px;
+    transition: all 1s;
+}
+
+.containerTotalPowerstats p:nth-child(1):hover{
+    background-color: #831a28;
+   
+}
 .hide{
     display: none;
 }
+
 
 @media all and (max-width: 1000px) {
     .containerTotalPowerstats{

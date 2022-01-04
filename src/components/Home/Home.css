@@ -1,6 +1,10 @@
+.containerInfo{
+    display: flex;
+}
+
 .containerCard{
     background-color: #002462;
-    display: flex;
+   
     margin: auto;
     opacity: 0.9;
     
@@ -12,13 +16,13 @@
     text-align: center;
 }
 .containerTotalPowerstats{
-    
     display: grid;
-    grid-template-columns: repeat(6, minmax(150px,1fr));
+    grid-template-columns: repeat(3, minmax(150px,1fr));
+    grid-template-rows: repeat(2, minmax(55px,1fr));
     
 }
 
-.containerTotalPowerstats p{
+.containerTotalPowerstats p, .containerAverage p{
     color: white;
     font-size: 18px;
     justify-self: center;
@@ -35,6 +39,12 @@
 .containerTotalPowerstats p:nth-child(1):hover{
     background-color: #831a28;
    
+}
+
+.containerAverage{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px,1fr));
+    
 }
 .hide{
     display: none;

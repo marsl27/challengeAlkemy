@@ -17,6 +17,11 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
         strength: 0,
     }
 
+    let heightAndWeight ={
+        height: 0,
+        weight:0
+    }
+
 
     for (let i = 0; i < team.length; i++) {
         totalPowerstats.intelligence += parseInt(team[i].powerstats.intelligence);
@@ -25,11 +30,23 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
         totalPowerstats.power += parseInt(team[i].powerstats.power);
         totalPowerstats.speed += parseInt(team[i].powerstats.speed);
         totalPowerstats.strength += parseInt(team[i].powerstats.strength);
-
+    }
+    function average(){
+        let cont = 0;
+        for (let i = 0; i < team.length; i++) {
+            cont++
+            heightAndWeight.height += parseInt(team[i].appearance.height[1].split(" ")[0]);
+            heightAndWeight.weight += parseInt(team[i].appearance.weight[1].split(" ")[0]); 
+        }
+        heightAndWeight.height = heightAndWeight.height/cont
+        heightAndWeight.weight = heightAndWeight.weight/cont
     }
     
+    average()
+    console.log(heightAndWeight);
 
-    let totalPowerstatsKeys = Object.keys(totalPowerstats).sort((a,b) => totalPowerstats[b]-totalPowerstats[a])
+    let totalPowerstatsKeys = Object.keys(totalPowerstats).sort((a, b) => totalPowerstats[b] - totalPowerstats[a])
+    let heightAndWeightKeys = Object.keys(heightAndWeight)
 
     return (
         <>
@@ -39,20 +56,38 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                 <Spinner />
             ) : (
                 <div >
-                    <div class={`${team.length === 0 ? "hide" : "card containerCard"}`}>
-                        <div class="card-header title">
-                        Total Powerstats
+                    <div className="containerInfo">
+                        <div class={`${team.length === 0 ? "hide" : "card containerCard"}`}>
+                            <div class="card-header title">
+                                Powerstats´ total score
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0 containerTotalPowerstats">
+                                    {totalPowerstatsKeys.map((power) => {
+                                        if (Object.hasOwnProperty.call(totalPowerstats, power)) {
+                                            return (
+                                                <p>{`${power}: ${totalPowerstats[power]} `}</p>
+                                            )
+                                        }
+                                    })}
+                                </blockquote>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0 containerTotalPowerstats">
-                            {totalPowerstatsKeys.map((power) => {
-                                if (Object.hasOwnProperty.call(totalPowerstats, power)) {
-                                    return (
-                                        <p>{`${power}: ${totalPowerstats[power]} `}</p>
-                                    )
-                                }
-                            })}
-                            </blockquote>
+                        <div class={`${team.length === 0 ? "hide" : "card containerCard"}`}>
+                            <div class="card-header title">
+                                Average height and weight
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0 containerAverage">
+                                    {heightAndWeightKeys.map((property) => {
+                                        if (Object.hasOwnProperty.call(heightAndWeight, property)) {
+                                            return (
+                                                <p>{`${property}: ${heightAndWeight[property]} `}</p>
+                                            )
+                                        }
+                                    })}
+                                </blockquote>
+                            </div>
                         </div>
                     </div>
                     <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} error={error} setError={setError} isTeam={isTeam} />

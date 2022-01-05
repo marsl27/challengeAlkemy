@@ -19,7 +19,7 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
 
     let heightAndWeight ={
         height: 0,
-        weight:0
+        weight: 0
     }
 
 
@@ -38,8 +38,8 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
             heightAndWeight.height += parseInt(team[i].appearance.height[1].split(" ")[0]);
             heightAndWeight.weight += parseInt(team[i].appearance.weight[1].split(" ")[0]); 
         }
-        heightAndWeight.height = heightAndWeight.height/cont
-        heightAndWeight.weight = heightAndWeight.weight/cont
+        heightAndWeight.height = `${parseFloat(heightAndWeight.height/cont).toFixed(2)} cm`
+        heightAndWeight.weight = `${parseFloat(heightAndWeight.weight/cont).toFixed(2)} kg`
     }
     
     average()
@@ -56,6 +56,7 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                 <Spinner />
             ) : (
                 <div >
+                    <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} error={error} setError={setError} isTeam={isTeam} />
                     <div className="containerInfo">
                         <div class={`${team.length === 0 ? "hide" : "card containerCard"}`}>
                             <div class="card-header title">
@@ -73,9 +74,9 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                                 </blockquote>
                             </div>
                         </div>
-                        <div class={`${team.length === 0 ? "hide" : "card containerCard"}`}>
+                        <div class={`${team.length === 0 ? "hide" : "card containerCard average"}`}>
                             <div class="card-header title">
-                                Average height and weight
+                                Average
                             </div>
                             <div class="card-body">
                                 <blockquote class="blockquote mb-0 containerAverage">
@@ -90,7 +91,7 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                             </div>
                         </div>
                     </div>
-                    <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} error={error} setError={setError} isTeam={isTeam} />
+                    
                 </div>
 
             )

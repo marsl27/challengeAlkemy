@@ -66,5 +66,17 @@
     transform: scale(1.1);
 }
 
+@media all and (max-width: 769px) {
+    .containerSearchBlock{
+        padding: 10px;
+    }
+   
+    .containerSearchBlock .form-group div {
+        width: 100%;
+    }
 
+    .containerSearchBlock .form-group button {
+        width: 25vw;
+    }
+}
 

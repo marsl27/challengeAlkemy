@@ -1,13 +1,15 @@
 .containerInfo{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+   
 }
 
 .containerCard{
     background-color: #002462;
    
-    margin: auto;
+    margin: 0 auto;
     opacity: 0.9;
-    
+    height: 90%;
     
 }
 .title{
@@ -43,7 +45,7 @@
 
 .containerAverage{
     display: grid;
-    grid-template-columns: repeat(2, minmax(250px,1fr));
+    grid-template-columns: repeat(2, minmax(200px,1fr));
     
 }
 .hide{
@@ -51,8 +53,32 @@
 }
 
 
+
+@media all and (max-width: 1200px) {
+    .containerInfo{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 30px;
+       
+    }
+    .containerCard{
+        width: 100%;
+    }
+
+    .average{
+        height: 70%;
+    }
+}
+
 @media all and (max-width: 1000px) {
     .containerTotalPowerstats{
         grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+    }
+  }
+
+  @media all and (max-width: 450px) {
+    .containerAverage{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, minmax(55px,1fr));
     }
   }

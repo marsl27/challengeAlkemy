@@ -44,7 +44,11 @@ const Login = () => (
                     window.location.pathname = "/challengeAlkemy"
                 })
                 .catch(error => {
-                    console.log(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Invalid credentials!',
+                    })
 
                 })
                 .finally(() => {

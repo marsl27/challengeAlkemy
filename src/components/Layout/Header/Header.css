@@ -117,15 +117,24 @@
 
 @media all and (max-width: 1000px) {
   .containerLogo{
-  min-width: 295px;
+    min-width: 280px;
   }
-  }
+}
 
 @media all and (max-width: 769px) {
   .userOptions{
-    left: calc(100vw - 214px);
+    /*left: calc(100vw - 214px);
     top:99px;
-    width: 175px;
+    width: 175px;*/
+    display: none;
+  }
+
+  .userGreat{
+    display: none;
+  }
+
+  .header{
+    padding: 0 12px;
   }
 }
 @media all and (max-width: 600px) {
@@ -134,7 +143,12 @@
   }
 }
 @media all and (max-width: 500px) {
-.containerLogo{
-min-width: 260px;
-}
+  .containerLogo{
+    min-width: 225px;
+  } 
+
+  .header img{
+    height: 60px;
+    width: 60px;
+  }
 }

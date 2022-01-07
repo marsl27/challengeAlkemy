@@ -58,12 +58,12 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                 <div >
                     <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} error={error} setError={setError} isTeam={isTeam} />
                     <div className="containerInfo">
-                        <div class={`${team.length === 0 ? "hide" : "card containerCard"}`}>
-                            <div class="card-header title">
+                        <div className={`${team.length === 0 ? "hide" : "card containerCard"}`}>
+                            <div className="card-header title">
                                 Powerstats´ total score
                             </div>
-                            <div class="card-body">
-                                <blockquote class="blockquote mb-0 containerTotalPowerstats">
+                            <div className="card-body">
+                                <blockquote className="blockquote mb-0 containerTotalPowerstats">
                                     {totalPowerstatsKeys.map((power) => {
                                         if (Object.hasOwnProperty.call(totalPowerstats, power)) {
                                             return (
@@ -74,12 +74,12 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                                 </blockquote>
                             </div>
                         </div>
-                        <div class={`${team.length === 0 ? "hide" : "card containerCard average"}`}>
-                            <div class="card-header title">
+                        <div className={`${team.length === 0 ? "hide" : "card containerCard average"}`}>
+                            <div className="card-header title">
                                 Average
                             </div>
-                            <div class="card-body">
-                                <blockquote class="blockquote mb-0 containerAverage">
+                            <div className="card-body">
+                                <blockquote className="blockquote mb-0 containerAverage">
                                     {heightAndWeightKeys.map((property) => {
                                         if (Object.hasOwnProperty.call(heightAndWeight, property)) {
                                             return (

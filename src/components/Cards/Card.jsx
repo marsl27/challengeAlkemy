@@ -4,16 +4,16 @@ import heroApi from "../../api/HeroApi";
 import BarraPowerstats from "../Hero/BarraPowerstats";
 import Swal from "sweetalert2";
 
-export default function Card({ removeHero, setRemoveHero, id, image, name, powerstats, setLoading, setError, data }) {
+export default function Card({ removeHero, setRemoveHero, id, image, name, powerstats, setLoading, setError, data, isTeam }) {
     let equipo = localStorage.getItem("team")
     let arrayEquipo = equipo === null ? [] : JSON.parse(equipo)
     const [buttonName, setButtonName] = useState((arrayEquipo.find((hero) => hero.id === id)) ? "Remove" : "Add")
 
     function handleClickAdd() {
-        console.log(id);
+        
         equipo = localStorage.getItem("team")
         arrayEquipo = equipo === null ? [] : JSON.parse(equipo)
-        console.log(arrayEquipo);
+       
         heroApi.getHeroById(id)
             .then(response => {
                 console.log(response);
@@ -77,7 +77,9 @@ export default function Card({ removeHero, setRemoveHero, id, image, name, power
         })
 
         localStorage.setItem("team", JSON.stringify(arrayEquipo))
-        setButtonName("Add")
+        if(!isTeam){
+            setButtonName("Add")
+        }
         setRemoveHero(!removeHero)
     }
 

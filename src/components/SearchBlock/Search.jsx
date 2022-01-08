@@ -5,47 +5,43 @@ import Cards from '../Cards/Cards';
 import { useParams } from "react-router"
 import heroApi from '../../api/HeroApi';
 
-export default function Search({setData, setLoading, setError,data, loading, team, setTeam }) {
-console.log("se renderizo");
-let { value } = useParams()
+export default function Search({ setData, setLoading, setError, data, loading }) {
 
-let isTeam = false //Esta en falso para evitar mostrar las powerstats en la card al buscar
+    let { value } = useParams()
 
-useEffect(()=>{
-    setLoading(true);
-    heroApi.getHeroByName(value)
-           .then(response=>{
-           
-               if(response.response ==="error"){
-                   console.log(response);
-                   setError(response.error)
-                   setData([]);
-                   
-               }else{
+    let isTeam = false //Esta en falso para evitar mostrar las powerstats en la card al buscar
+
+    useEffect(() => {
+        setLoading(true);
+        heroApi.getHeroByName(value)
+            .then(response => {
+
+                if (response.response === "error") {
+                    console.log(response);
+                    setError(response.error)
+                    setData([]);
+
+                } else {
                     setData(response.results);
                     setError("")
-               }
-               
-               setLoading(false);
-               
-           })
-           .catch(error=>{
-               setError(error.message);
-               setLoading(false);
-           })
-}, [value])
+                }
+
+                setLoading(false);
+
+            })
+            .catch(error => {
+                setError(error.message);
+                setLoading(false);
+            })
+    }, [value])
 
     return (
         <>
-        <SearchBlockForm setData={setData} setLoading={setLoading} setError={setError} />
-        
-               
+            <SearchBlockForm setData={setData} setLoading={setLoading} setError={setError} />
             {loading ? (
                 <Spinner />
             ) : (
-               
-                  <Cards data={data} loading={loading} setTeam={setTeam} setLoading={setLoading} setError={setError} team={team} isTeam={isTeam}/>
-               
+                <Cards data={data} loading={loading} setLoading={setLoading} setError={setError} isTeam={isTeam} />
             )}
         </>
     );

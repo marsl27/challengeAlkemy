@@ -7,10 +7,16 @@
     z-index: 100;
 }
 
+
+.containerCard{
+    width:22rem;
+}
+
 .card{
     border-radius: 10px;
     justify-self: center;
     transition: all 0.8s;
+    width: 21rem;
 }
 
 .card:hover{
@@ -43,4 +49,16 @@
 
 .redButton{
     background-color: #b31c31;
+}
+
+@media all and (max-width: 414px) {
+    .containerCards{ 
+        grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    }
+
+    .containerCard{
+        width: 16.5rem;
+    }
+
+
 }

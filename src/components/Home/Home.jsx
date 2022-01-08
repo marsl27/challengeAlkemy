@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./Home.css"
 import SearchBlockForm from '../SearchBlock/SearchBlockForm';
 import Spinner from "../Spinner/Spinner";
 import Cards from '../Cards/Cards';
 
-export default function Home({ setData, setLoading, error, setError, team, loading, setTeam }) {
-    console.log(team);
+export default function Home({ setData, setLoading, error, setError, loading }) {
+   
     let isTeam = true //Es para mostrar las powerstats en la card si es el equipo
+    const [removeHero, setRemoveHero] = useState(false)
+
+    let equipo = localStorage.getItem("team")
+    let arrayEquipo= equipo===null ? [] : JSON.parse(equipo)
 
     let totalPowerstats = {
         intelligence: 0,
@@ -23,28 +27,27 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
     }
 
 
-    for (let i = 0; i < team.length; i++) {
-        totalPowerstats.intelligence += parseInt(team[i].powerstats.intelligence);
-        totalPowerstats.combat += parseInt(team[i].powerstats.combat);
-        totalPowerstats.durability += parseInt(team[i].powerstats.durability);
-        totalPowerstats.power += parseInt(team[i].powerstats.power);
-        totalPowerstats.speed += parseInt(team[i].powerstats.speed);
-        totalPowerstats.strength += parseInt(team[i].powerstats.strength);
+    for (let i = 0; i < arrayEquipo.length; i++) {
+        totalPowerstats.intelligence += parseInt(arrayEquipo[i].powerstats.intelligence);
+        totalPowerstats.combat += parseInt(arrayEquipo[i].powerstats.combat);
+        totalPowerstats.durability += parseInt(arrayEquipo[i].powerstats.durability);
+        totalPowerstats.power += parseInt(arrayEquipo[i].powerstats.power);
+        totalPowerstats.speed += parseInt(arrayEquipo[i].powerstats.speed);
+        totalPowerstats.strength += parseInt(arrayEquipo[i].powerstats.strength);
     }
     function average(){
         let cont = 0;
-        for (let i = 0; i < team.length; i++) {
+        for (let i = 0; i < arrayEquipo.length; i++) {
             cont++
-            heightAndWeight.height += parseInt(team[i].appearance.height[1].split(" ")[0]);
-            heightAndWeight.weight += parseInt(team[i].appearance.weight[1].split(" ")[0]); 
+            heightAndWeight.height += parseInt(arrayEquipo[i].appearance.height[1].split(" ")[0]);
+            heightAndWeight.weight += parseInt(arrayEquipo[i].appearance.weight[1].split(" ")[0]); 
         }
         heightAndWeight.height = `${parseFloat(heightAndWeight.height/cont).toFixed(2)} cm`
         heightAndWeight.weight = `${parseFloat(heightAndWeight.weight/cont).toFixed(2)} kg`
     }
     
     average()
-    console.log(heightAndWeight);
-
+    
     let totalPowerstatsKeys = Object.keys(totalPowerstats).sort((a, b) => totalPowerstats[b] - totalPowerstats[a])
     let heightAndWeightKeys = Object.keys(heightAndWeight)
 
@@ -56,9 +59,9 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                 <Spinner />
             ) : (
                 <div >
-                    <Cards data={team} loading={loading} setTeam={setTeam} setLoading={setLoading} error={error} setError={setError} isTeam={isTeam} />
+                    <Cards removeHero ={removeHero} setRemoveHero = {setRemoveHero} data={arrayEquipo} loading={loading} setLoading={setLoading} error={error} setError={setError} isTeam={isTeam} />
                     <div className="containerInfo">
-                        <div className={`${team.length === 0 ? "hide" : "card containerCard"}`}>
+                        <div className={`${arrayEquipo.length === 0 ? "hide" : "card"}`} id="containerCardInfo">
                             <div className="card-header title">
                                 Powerstats´ total score
                             </div>
@@ -74,7 +77,7 @@ export default function Home({ setData, setLoading, error, setError, team, loadi
                                 </blockquote>
                             </div>
                         </div>
-                        <div className={`${team.length === 0 ? "hide" : "card containerCard average"}`}>
+                        <div className={`${arrayEquipo.length === 0 ? "hide" : "card average"}`} id="containerCardInfo">
                             <div className="card-header title">
                                 Average
                             </div>

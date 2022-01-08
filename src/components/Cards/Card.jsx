@@ -4,57 +4,63 @@ import heroApi from "../../api/HeroApi";
 import BarraPowerstats from "../Hero/BarraPowerstats";
 import Swal from "sweetalert2";
 
-export default function Card({ id, image, name, powerstats, setData, setLoading, setError, data, setTeam, team, isTeam }) {
+export default function Card({ removeHero, setRemoveHero, id, image, name, powerstats, setLoading, setError, data }) {
+    let equipo = localStorage.getItem("team")
+    let arrayEquipo = equipo === null ? [] : JSON.parse(equipo)
+    const [buttonName, setButtonName] = useState((arrayEquipo.find((hero) => hero.id === id)) ? "Remove" : "Add")
 
-    
     function handleClickAdd() {
         console.log(id);
-        
+        equipo = localStorage.getItem("team")
+        arrayEquipo = equipo === null ? [] : JSON.parse(equipo)
+        console.log(arrayEquipo);
         heroApi.getHeroById(id)
             .then(response => {
                 console.log(response);
                 if (response.response === "error") {
                     setError(response.error)
-                    setTeam([]);
                 } else {
-                    if (team.length < 6) {
+                    if (arrayEquipo.length < 6) {
                         let good = 0;
                         let bad = 0;
-                        team.map((hero) => {
-                            if(hero.biography.alignment === "good"){
+                        arrayEquipo.map((hero) => {
+                            if (hero.biography.alignment === "good") {
                                 good++
-                            }else if(hero.biography.alignment === "bad"){
+                            } else if (hero.biography.alignment === "bad") {
                                 bad++
                             }
                         })
-                        if(response.biography.alignment === "bad" && bad<3){
-                            setTeam([...team, response]);
-                        
-                        } else if(response.biography.alignment === "good" && good<3){
-                            setTeam([...team, response]);
-                          
-                        } else{
+                        if (response.biography.alignment === "bad" && bad < 3) {
+                            arrayEquipo.push(response)
+                            localStorage.setItem("team", JSON.stringify(arrayEquipo))
+                            setButtonName("Remove")
+                            setRemoveHero(!removeHero)
+                        } else if (response.biography.alignment === "good" && good < 3) {
+                            
+                            arrayEquipo.push(response)
+                            localStorage.setItem("team", JSON.stringify(arrayEquipo))
+                            setButtonName("Remove")
+                            setRemoveHero(!removeHero)
+                        } else {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: 'Up to 3 members of each orientation',
                             })
                         }
-                        
-                    }else{
+
+                    } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
                             text: 'You can only have 6 members in your team!',
                         })
                     }
-
-                    console.log(team);
-                    console.log(response);
                 }
 
                 setLoading(false);
-
+                localStorage.setItem("team", JSON.stringify(arrayEquipo))
+                console.log(localStorage.getItem("team"));
             })
             .catch(error => {
                 setError(error.message);
@@ -62,42 +68,23 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
             })
 
     }
-   
-    function handleClickRemove() {
-        let datos = isTeam ? data : team
-        let aux = datos;
 
-        aux = aux.filter((hero) => {
-            console.log(hero.id);
-            return hero.id != id
+    function handleClickRemove() {
+        arrayEquipo =JSON.parse(localStorage.getItem("team"))
+        
+        arrayEquipo = arrayEquipo.filter((hero) => {
+            return hero.id !== id
         })
 
-        setTeam(aux)
-
+        localStorage.setItem("team", JSON.stringify(arrayEquipo))
+        setButtonName("Add")
+        setRemoveHero(!removeHero)
     }
-
-    function changeButton() {
-
-        if (isTeam || team.find((hero) => hero.id === id)) {
-
-            return "Remove"
-        } else if (isTeam) {
-
-            return "Remove"
-        }
-        else {
-            console.log("segundo");
-            return "Add"
-        }
-    }
-
-
 
     let powerstatsKeys = powerstats !== null ? Object.keys(powerstats) : null;
-    console.log(changeButton());
-    console.log(team);
+    
     return (
-        <div className="card" style={{ width: "22rem" }}>
+        <div className="card containerCard">
             <div className="containerImage">
                 <img className="card-img-top" src={image} alt={name} />
             </div>
@@ -111,7 +98,7 @@ export default function Card({ id, image, name, powerstats, setData, setLoading,
                     }
                 }) : null}
                 <div className="containerButtons">
-                    <button className="btn btn-primary" onClick={changeButton() === "Add" ? handleClickAdd : handleClickRemove}>{changeButton()}</button>
+                    <button className="btn btn-primary" onClick={buttonName==="Add" ? handleClickAdd : handleClickRemove}>{buttonName}</button>
                     <Link to={`/hero/${id}`}><button className="btn btn-secondary" >More</button></Link>
                 </div>
             </div>
